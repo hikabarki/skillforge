@@ -1,0 +1,21 @@
+# Generated artifacts — regenerate with `make all`, never commit
+data/corpus/*.jsonl
+data/trajectories/*.jsonl
+data/reports/*.json
+!data/**/.gitkeep
+
+# Harvested third-party skills (upstream licenses vary — see docs/LICENSING.md)
+data/harvested/
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+Thumbs.db
+
+# Local agent/editor state
+.claude/

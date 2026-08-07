@@ -1,0 +1,53 @@
+# SkillForge — QLoRA SFT for skill selection.
+#
+# Deliberately NOT pinned to a named base model. Model IDs churn, and a config that
+# names a checkpoint the author never loaded is a config that lies. Fill model_id
+# with any ~1-4B instruct model you have actually pulled, then diff its config.json
+# against the shapes below before spending GPU time.
+#
+# Nothing in this repo has been trained. See README "Status".
+
+model_id: PLACEHOLDER_MODEL_ID          # e.g. a 1-4B instruct checkpoint you have locally
+trust_remote_code: false
+
+data:
+  train: data/trajectories/train.sft.jsonl   # produced by `skillforge render`
+  eval:  data/trajectories/dev.sft.jsonl     # rendered from the skill-level holdout
+  format: chatml
+  max_seq_length: 4096                       # menus of 20 skills fit; raise for larger menus
+  packing: false                             # packing mixes menus across examples — do not
+
+quantization:
+  load_in_4bit: true
+  bnb_4bit_quant_type: nf4
+  bnb_4bit_compute_dtype: bfloat16
+  bnb_4bit_use_double_quant: true
+
+lora:
+  r: 32
+  lora_alpha: 64
+  lora_dropout: 0.05
+  bias: none
+  task_type: CAUSAL_LM
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+training:
+  output_dir: checkpoints/skillforge-qlora
+  num_train_epochs: 2
+  per_device_train_batch_size: 2
+  gradient_accumulation_steps: 8            # effective batch 16
+  learning_rate: 1.0e-4
+  lr_scheduler_type: cosine
+  warmup_ratio: 0.03
+  logging_steps: 10
+  eval_strategy: epoch
+  save_strategy: epoch
+  bf16: true
+  gradient_checkpointing: true
+  seed: 20260807
+  report_to: none
+
+# Train on the completion only. The prompt holds the whole skill menu; letting the
+# loss cover it teaches the model to reproduce descriptions instead of choosing
+# between them, which looks like a falling loss curve and a useless model.
+completion_only_loss: true

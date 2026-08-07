@@ -1,0 +1,33 @@
+{
+  "skills_in": 10,
+  "skills_used": 10,
+  "trajectories": 113,
+  "by_kind": {
+    "select": 43,
+    "invoke": 35,
+    "verify": 35
+  },
+  "abstain_items": 8,
+  "distractor_kind_counts": {
+    "lexical": 315,
+    "same_source": 315,
+    "unrelated": 27
+  },
+  "skipped": {
+    "no_trigger_phrase": 0,
+    "no_steps": 0,
+    "no_criteria": 0,
+    "no_abstain_menu": 0
+  },
+  "params": {
+    "n_distractors": 6,
+    "abstain_rate": 0.25,
+    "max_tasks_per_skill": 4,
+    "seed": 20260807,
+    "abstain_sim_max": 0.1
+  },
+  "train_rows": 92,
+  "dev_rows": 21,
+  "dev_path": "data/trajectories/dev.jsonl",
+  "holdout": "by skill (no skill appears in both splits)"
+}

@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skillforge"
+version = "0.1.0"
+description = "Turn the open agent-skill ecosystem into supervised fine-tuning data — and measure whether a small model can actually use it."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [{ name = "MKD Co., Ltd." }]
+keywords = ["llm", "agents", "agent-skills", "dataset", "fine-tuning", "lora", "evaluation"]
+dependencies = []  # core pipeline is stdlib-only, by design
+
+[project.optional-dependencies]
+train = ["torch>=2.4", "transformers>=4.45", "peft>=0.13", "trl>=0.11", "datasets>=3.0", "bitsandbytes>=0.44", "accelerate>=1.0", "pyyaml>=6.0"]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+skillforge = "skillforge.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

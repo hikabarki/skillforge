@@ -1,0 +1,19 @@
+{
+  "root": "fixtures/skills",
+  "skills_written": 10,
+  "rejected": 2,
+  "rejects": [
+    {
+      "path": "_broken-no-description/SKILL.md",
+      "reason": "frontmatter has no 'description' — the trigger surface is missing"
+    },
+    {
+      "path": "_broken-no-frontmatter/SKILL.md",
+      "reason": "document does not start with a '---' frontmatter delimiter"
+    }
+  ],
+  "with_warnings": 0,
+  "without_license": 0,
+  "with_success_criteria": 10,
+  "median_description_chars": 289
+}

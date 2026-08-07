@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "SkillForge: full pipeline",
+      "type": "debugpy", "request": "launch", "module": "skillforge.cli",
+      "args": ["harvest", "--input", "fixtures/skills", "--out", "data/corpus/skills.jsonl"],
+      "console": "integratedTerminal",
+      "env": { "PYTHONPATH": "src", "PYTHONIOENCODING": "utf-8" }
+    },
+    {
+      "name": "SkillForge: synthesize",
+      "type": "debugpy", "request": "launch", "module": "skillforge.cli",
+      "args": ["synthesize", "--corpus", "data/corpus/skills.jsonl", "--out",
+               "data/trajectories/train.jsonl", "--distractors", "6", "--seed", "20260807"],
+      "console": "integratedTerminal",
+      "env": { "PYTHONPATH": "src", "PYTHONIOENCODING": "utf-8" }
+    }
+  ]
+}

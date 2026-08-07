@@ -1,0 +1,5 @@
+# The core pipeline (harvest / synthesize / render / evaluate) needs NOTHING.
+# It is stdlib-only so it runs on any CPU box, in CI, or on a laptop.
+#
+#   pip install -e ".[dev]"     # + pytest, ruff
+#   pip install -e ".[train]"   # + torch/peft/trl, only for the GPU stage
