@@ -28,6 +28,8 @@ Turn the open agent-skill ecosystem into supervised fine-tuning data — and mea
 
 ---
 
+[![CPU checks](https://github.com/mkd-hika/skillforge/actions/workflows/ci.yml/badge.svg)](https://github.com/mkd-hika/skillforge/actions/workflows/ci.yml)
+
 ## Reproduce the fixture report
 
 ```bash
