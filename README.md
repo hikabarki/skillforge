@@ -28,6 +28,18 @@ Turn the open agent-skill ecosystem into supervised fine-tuning data — and mea
 
 ---
 
+## Reproduce the fixture report
+
+```bash
+git clone https://github.com/mkd-hika/skillforge.git
+cd skillforge
+python examples/quickstart.py
+```
+
+[View the recorded output and its limitations](examples/README.md). No installation or GPU is required.
+
+![Accuracy of trivial baselines on training fixtures](docs/images/fixture-baselines.png)
+
 ## The gap
 
 Agent skills — a `SKILL.md` with a `description` that decides when it fires and a body
@@ -81,7 +93,8 @@ split answers a much easier question while looking identical on a scoreboard.
 No GPU, no install, no network:
 
 ```bash
-git clone <your-fork> && cd skillforge
+git clone https://github.com/mkd-hika/skillforge.git
+cd skillforge
 make all            # harvest → synthesize → render → evaluate, on the bundled fixtures
 make test           # 30 tests
 ```

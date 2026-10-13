@@ -1,0 +1,3 @@
+*.jsonl
+*.harvest_stats.json
+*.synth_stats.json
